@@ -83,6 +83,15 @@ module.exports = function (grunt) {
                 },
                 files: sassFiles
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    base: 'app',
+                    keepalive: true
+                }
+            }
         }
     });
 
@@ -93,6 +102,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);

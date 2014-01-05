@@ -1,3 +1,6 @@
 # WebStorm Artifacts #
 .idea
 
+# node modules - grunt and grunt plugins #
+node_modules
+

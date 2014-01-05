@@ -12,6 +12,14 @@
     "boss": true,
     "eqnull": true,
     "globals": {
-        "jQuery": true
+        "jQuery": true,
+        "it" : false,
+        "xit" : false,
+        "describe" : false,
+        "xdescribe" : false,
+        "beforeEach" : false,
+        "afterEach" : false,
+        "expect" : false,
+        "spyOn" : false
     }
 }

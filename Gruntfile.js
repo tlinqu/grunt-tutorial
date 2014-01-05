@@ -52,7 +52,7 @@ module.exports = function (grunt) {
                 src: ['lib/**/*.js', 'test/**/*.js']
             },
             all: {
-                src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/vendor/**/*.js']
+                src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/vendor/**/*.js', 'test/**/*.js']
             }
         },
         nodeunit: {

@@ -33,6 +33,7 @@ module.exports = function (grunt) {
         },
         jshint: {
             options: {
+                node: true,
                 curly: true,
                 eqeqeq: true,
                 immed: true,

@@ -74,6 +74,18 @@ module.exports = function (grunt) {
                     src: '**/*.{sass, scss}',
                     ext: '.css'
                 }]
+            },
+            prod: {
+                options: {
+                    style: 'compressed'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'app/sass/',
+                    dest: '.tmp/styles/',
+                    src: '**/*.{sass, scss}',
+                    ext: '.css'
+                }]
             }
         }
     });

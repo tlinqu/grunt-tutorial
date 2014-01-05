@@ -2,6 +2,14 @@
 'use strict';
 module.exports = function (grunt) {
 
+    var sassFiles = [{
+        expand: true,
+        cwd: 'app/sass/',
+        dest: '.tmp/styles/',
+        src: '**/*.{sass, scss}',
+        ext: '.css'
+    }];
+
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -67,25 +75,13 @@ module.exports = function (grunt) {
                     style: 'expanded',
                     lineComments: true
                 },
-                files: [{
-                    expand: true,
-                    cwd: 'app/sass/',
-                    dest: '.tmp/styles/',
-                    src: '**/*.{sass, scss}',
-                    ext: '.css'
-                }]
+                files: sassFiles
             },
             prod: {
                 options: {
                     style: 'compressed'
                 },
-                files: [{
-                    expand: true,
-                    cwd: 'app/sass/',
-                    dest: '.tmp/styles/',
-                    src: '**/*.{sass, scss}',
-                    ext: '.css'
-                }]
+                files: sassFiles
             }
         }
     });

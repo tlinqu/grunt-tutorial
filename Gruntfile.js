@@ -2,13 +2,15 @@
 'use strict';
 module.exports = function (grunt) {
 
-    var sassFiles = [{
-        expand: true,
-        cwd: 'app/sass/',
-        dest: '.tmp/styles/',
-        src: '**/*.{sass,scss}',
-        ext: '.css'
-    }];
+    var sassFiles = [
+        {
+            expand: true,
+            cwd: 'app/sass/',
+            dest: '.tmp/styles/',
+            src: '**/*.{sass,scss}',
+            ext: '.css'
+        }
+    ];
 
     // Project configuration.
     grunt.initConfig({
@@ -88,8 +90,14 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 9000,
-                    base: 'app',
-                    keepalive: true
+                    keepalive: true,
+                    middleware: function (connect) {
+                        var path = require('path');
+                        return [
+                            connect.static(path.resolve('app')),
+                            connect.static(path.resolve('.tmp')) // main.css in .tmp folder, installed on the server http://localhost:9000/styles/main.css
+                        ];
+                    }
                 }
             }
         }

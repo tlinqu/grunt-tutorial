@@ -6,3 +6,5 @@ node_modules
 
 # generated folders/files #
 .tmp
+.grunt
+test/index.html

@@ -66,6 +66,10 @@ module.exports = function (grunt) {
             lib_test: {
                 files: '<%= jshint.lib_test.src %>',
                 tasks: ['jshint:lib_test', 'nodeunit']
+            },
+            sass: {
+                files: ['app/sass/*.{sass,scss}'],
+                tasks: ['sass:dev']
             }
         },
         sass: {

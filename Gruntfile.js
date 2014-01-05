@@ -57,6 +57,24 @@ module.exports = function (grunt) {
                 files: '<%= jshint.lib_test.src %>',
                 tasks: ['jshint:lib_test', 'nodeunit']
             }
+        },
+        sass: {
+            options: {
+                cacheLocation: '.tmp/.sass-cache'
+            },
+            dev: {
+                options: {
+                    style: 'expanded',
+                    lineComments: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'app/sass/',
+                    dest: '.tmp/styles/',
+                    src: '**/*.{sass, scss}',
+                    ext: '.css'
+                }]
+            }
         }
     });
 
@@ -66,6 +84,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);

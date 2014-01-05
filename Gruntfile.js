@@ -119,15 +119,16 @@ module.exports = function (grunt) {
         }
     });
 
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    [ // load plugins which provide necessary tasks.
+        'grunt-contrib-concat',
+        'grunt-contrib-uglify',
+        'grunt-contrib-nodeunit',
+        'grunt-contrib-jshint',
+        'grunt-contrib-watch',
+        'grunt-contrib-sass',
+        'grunt-contrib-connect',
+        'grunt-contrib-jasmine'
+    ].forEach(grunt.loadNpmTasks);
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);

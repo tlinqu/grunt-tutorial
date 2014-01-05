@@ -129,6 +129,30 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('server', 'Run a server', [
+        'jshint',
+        'sass:dev',
+        'connect:server',
+        'open:server',
+        'watch'
+    ]);
+
+    grunt.registerTask('test', 'Run tests in the console', [
+        'jshint',
+        'jasmine'
+    ]);
+    grunt.registerTask('test:browser', 'Run tests in a browser', [
+        'jshint',
+        'jasmine:shell:build',
+        'connect:test',
+        'open:test',
+        'watch'
+    ]);
+    grunt.registerTask('version', 'Shows version number', function () {
+        var pkg = grunt.file.readJSON('package.json');
+        console.log(pkg.name, pkg.version);
+    });
+
     [ // load plugins which provide necessary tasks.
         'grunt-contrib-concat',
         'grunt-contrib-uglify',

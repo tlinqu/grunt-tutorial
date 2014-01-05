@@ -100,6 +100,15 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        jasmine: {
+            shell: {
+                options: {
+                    specs: ['test/specs/**/*_spec.js'],
+                    vendor: ['app/js/vendor/**/*.js']
+                },
+                src: ['app/js/**/*.js', '!app/js/vendor/**/*.js']
+            }
         }
     });
 
@@ -111,6 +120,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);

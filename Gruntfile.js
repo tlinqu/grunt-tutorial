@@ -99,6 +99,12 @@ module.exports = function (grunt) {
                         ];
                     }
                 }
+            },
+            test: {
+                options: {
+                    port: 9001,
+                    keepalive: true
+                }
             }
         },
         jasmine: {

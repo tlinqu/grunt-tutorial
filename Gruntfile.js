@@ -118,6 +118,14 @@ module.exports = function (grunt) {
                 },
                 src: ['app/js/**/*.js', '!app/js/vendor/**/*.js']
             }
+        },
+        open: {
+            server: {
+                path: 'http://localhost:9000'
+            },
+            test: {
+                path: 'http://localhost:9001/test'
+            }
         }
     });
 
@@ -129,7 +137,8 @@ module.exports = function (grunt) {
         'grunt-contrib-watch',
         'grunt-contrib-sass',
         'grunt-contrib-connect',
-        'grunt-contrib-jasmine'
+        'grunt-contrib-jasmine',
+        'grunt-open'
     ].forEach(grunt.loadNpmTasks);
 
     // Default task.

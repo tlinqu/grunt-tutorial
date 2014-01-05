@@ -105,7 +105,8 @@ module.exports = function (grunt) {
             shell: {
                 options: {
                     specs: ['test/specs/**/*_spec.js'],
-                    vendor: ['app/js/vendor/**/*.js']
+                    vendor: ['app/js/vendor/**/*.js'],
+                    outfile: 'test/index.html'
                 },
                 src: ['app/js/**/*.js', '!app/js/vendor/**/*.js']
             }

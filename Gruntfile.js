@@ -94,7 +94,6 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 9000,
-                    keepalive: true,
                     middleware: function (connect) {
                         var path = require('path');
                         return [
@@ -106,8 +105,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    port: 9001,
-                    keepalive: true
+                    port: 9001
                 }
             }
         },

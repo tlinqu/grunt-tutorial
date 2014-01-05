@@ -126,6 +126,9 @@ module.exports = function (grunt) {
             test: {
                 path: 'http://localhost:9001/test'
             }
+        },
+        clean: {
+            all: ['.tmp', '.grunt', 'test/index.html']
         }
     });
 
@@ -162,7 +165,8 @@ module.exports = function (grunt) {
         'grunt-contrib-sass',
         'grunt-contrib-connect',
         'grunt-contrib-jasmine',
-        'grunt-open'
+        'grunt-open',
+        'grunt-contrib-clean'
     ].forEach(grunt.loadNpmTasks);
 
     // Default task.

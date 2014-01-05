@@ -4,3 +4,5 @@
 # node modules - grunt and grunt plugins #
 node_modules
 
+# generated folders/files #
+.tmp

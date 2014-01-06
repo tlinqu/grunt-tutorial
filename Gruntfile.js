@@ -128,7 +128,13 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-            all: ['.tmp', '.grunt', 'test/index.html']
+            all: [
+                '.tmp',
+                '.grunt',
+                'test/index.html',
+                'build',
+                '*.tar.gz'
+            ]
         },
         copy: {
             release: {

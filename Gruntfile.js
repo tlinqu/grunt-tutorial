@@ -151,7 +151,7 @@ module.exports = function (grunt) {
         compress: {
             release: {
                 options: {
-                    archive: 'webapp.tar.gz'
+                    archive: '<%= pkg.name %>-<%= pkg.version %>.tar.gz'
                 },
                 files: [
                     {

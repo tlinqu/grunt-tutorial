@@ -55,9 +55,6 @@ module.exports = function (grunt) {
                 src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/vendor/**/*.js', 'test/**/*.js']
             }
         },
-        nodeunit: {
-            files: ['test/**/*_test.js']
-        },
         watch: {
             gruntfile: {
                 files: '<%= jshint.gruntfile.src %>',
@@ -204,7 +201,6 @@ module.exports = function (grunt) {
     [ // load plugins which provide necessary tasks.
         'grunt-contrib-concat',
         'grunt-contrib-uglify',
-        'grunt-contrib-nodeunit',
         'grunt-contrib-jshint',
         'grunt-contrib-watch',
         'grunt-contrib-sass',

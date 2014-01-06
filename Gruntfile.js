@@ -23,7 +23,7 @@ module.exports = function (grunt) {
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         meta: {
-          name: "bla"
+            name: "bla"
         },
         // Task configuration.
         concat: {
@@ -168,6 +168,19 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        less: {
+            dev: {
+                options: { paths: ['assets/css'] },
+                files: { '.tmp/styles/result.css': 'app/less/sample.less' }
+            },
+            prod: {
+                options: {
+                    paths: ['assets/css'],
+                    cleancss: true
+                },
+                files: { '.tmp/styles/result.css': 'app/less/sample.less' }
+            }
         }
     });
 
@@ -204,7 +217,7 @@ module.exports = function (grunt) {
         var pkg = grunt.file.readJSON('package.json');
         console.log(pkg.name, pkg.version);
     });
-    grunt.registerTask('foo', 'My "foo" task.', function() {
+    grunt.registerTask('foo', 'My "foo" task.', function () {
         // Log the property value. Returns null if the property is undefined.
         grunt.log.writeln('The meta.name property is: ' + grunt.config('meta.name'));
         // Also logs the property value. Returns null if the property is undefined.
@@ -222,6 +235,7 @@ module.exports = function (grunt) {
         'grunt-open',
         'grunt-contrib-clean',
         'grunt-contrib-copy',
-        'grunt-contrib-compress'
+        'grunt-contrib-compress',
+        'grunt-contrib-less'
     ].forEach(grunt.loadNpmTasks);
 };

@@ -193,6 +193,13 @@ module.exports = function (grunt) {
         var pkg = grunt.file.readJSON('package.json');
         console.log(pkg.name, pkg.version);
     });
+    grunt.registerTask('release', 'Generates a release tarball', [
+        'sass:prod',
+        'test',
+        'clean',
+        'copy:release',
+        'compress:release'
+    ]);
 
     [ // load plugins which provide necessary tasks.
         'grunt-contrib-concat',

@@ -203,7 +203,15 @@ module.exports = function (grunt) {
                 src: ['.tmp/styles/**/*.css']
             }
         },
-        'git-describe': { me: {} }
+        'git-describe': { me: {} },
+        karma: {
+            unit: { configFile: 'test/config/karma.conf.js' },
+            watch: {
+                configFile: 'test/config/karma.conf.js',
+                singleRun: false,
+                autoWatch: true
+            }
+        }
     });
 
     // Alias Tasks
@@ -275,6 +283,7 @@ module.exports = function (grunt) {
         'grunt-contrib-compress',
         'grunt-contrib-less',
         'grunt-contrib-csslint',
-        'grunt-git-describe'
+        'grunt-git-describe',
+        'grunt-karma'
     ].forEach(grunt.loadNpmTasks);
 };

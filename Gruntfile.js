@@ -1,5 +1,6 @@
 /*global module:false*/
 'use strict';
+// The "wrapper" function
 module.exports = function (grunt) {
 
     var sassFiles = [
@@ -12,7 +13,7 @@ module.exports = function (grunt) {
         }
     ];
 
-    // Project configuration.
+    // Project and task configuration.
     grunt.initConfig({
         // Metadata.
         pkg: grunt.file.readJSON('package.json'),
@@ -167,6 +168,7 @@ module.exports = function (grunt) {
         }
     });
 
+    // Alias Tasks
     grunt.registerTask('server', 'Run a server', [
         'jshint',
         'sass:dev',
@@ -174,7 +176,6 @@ module.exports = function (grunt) {
         'open:server',
         'watch'
     ]);
-
     grunt.registerTask('test', 'Run tests in the console', [
         'jshint',
         'jasmine'
@@ -186,10 +187,6 @@ module.exports = function (grunt) {
         'open:test',
         'watch'
     ]);
-    grunt.registerTask('version', 'Shows version number', function () {
-        var pkg = grunt.file.readJSON('package.json');
-        console.log(pkg.name, pkg.version);
-    });
     grunt.registerTask('release', 'Generates a release tarball', [
         'sass:prod',
         'test',
@@ -197,6 +194,13 @@ module.exports = function (grunt) {
         'copy:release',
         'compress:release'
     ]);
+    // Default task.
+    grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
+    // "Basic" Tasks
+    grunt.registerTask('version', 'Shows version number', function () {
+        var pkg = grunt.file.readJSON('package.json');
+        console.log(pkg.name, pkg.version);
+    });
 
     [ // load plugins which provide necessary tasks.
         'grunt-contrib-concat',
@@ -211,8 +215,4 @@ module.exports = function (grunt) {
         'grunt-contrib-copy',
         'grunt-contrib-compress'
     ].forEach(grunt.loadNpmTasks);
-
-    // Default task.
-    grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
-
 };

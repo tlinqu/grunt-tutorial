@@ -10,3 +10,5 @@ node_modules
 test/index.html
 build
 *.tar.gz
+coverage
+test-results.xml

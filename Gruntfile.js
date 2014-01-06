@@ -181,6 +181,17 @@ module.exports = function (grunt) {
                 },
                 files: { '.tmp/styles/result.css': 'app/less/sample.less' }
             }
+        },
+        csslint: {
+            options: { csslintrc: '.csslintrc' },
+            strict: {
+                options: { import: 2 },
+                src: ['.tmp/styles/**/*.css']
+            },
+            lax: {
+                options: { import: false },
+                src: ['.tmp/styles/**/*.css']
+            }
         }
     });
 
@@ -188,6 +199,7 @@ module.exports = function (grunt) {
     grunt.registerTask('server', 'Run a server', [
         'jshint',
         'sass:dev',
+        'csslint:strict',
         'connect:server',
         'open:server',
         'watch'
@@ -205,6 +217,7 @@ module.exports = function (grunt) {
     ]);
     grunt.registerTask('release', 'Generates a release tarball', [
         'sass:prod',
+        'csslint:strict',
         'test',
         'clean',
         'copy:release',
@@ -236,6 +249,7 @@ module.exports = function (grunt) {
         'grunt-contrib-clean',
         'grunt-contrib-copy',
         'grunt-contrib-compress',
-        'grunt-contrib-less'
+        'grunt-contrib-less',
+        'grunt-contrib-csslint'
     ].forEach(grunt.loadNpmTasks);
 };

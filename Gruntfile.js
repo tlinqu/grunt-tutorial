@@ -129,6 +129,24 @@ module.exports = function (grunt) {
         },
         clean: {
             all: ['.tmp', '.grunt', 'test/index.html']
+        },
+        copy: {
+            release: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app',
+                        dest: 'build',
+                        src: ['*.html', 'js/**/*', 'images/**/*']
+                    },
+                    {
+                        expand: true,
+                        cwd: '.tmp',
+                        dest: 'build',
+                        src: ['styles/*']
+                    }
+                ]
+            }
         }
     });
 
@@ -166,7 +184,8 @@ module.exports = function (grunt) {
         'grunt-contrib-connect',
         'grunt-contrib-jasmine',
         'grunt-open',
-        'grunt-contrib-clean'
+        'grunt-contrib-clean',
+        'grunt-contrib-copy'
     ].forEach(grunt.loadNpmTasks);
 
     // Default task.

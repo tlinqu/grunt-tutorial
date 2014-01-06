@@ -22,6 +22,9 @@ module.exports = function (grunt) {
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        meta: {
+          name: "bla"
+        },
         // Task configuration.
         concat: {
             options: {
@@ -200,6 +203,12 @@ module.exports = function (grunt) {
     grunt.registerTask('version', 'Shows version number', function () {
         var pkg = grunt.file.readJSON('package.json');
         console.log(pkg.name, pkg.version);
+    });
+    grunt.registerTask('foo', 'My "foo" task.', function() {
+        // Log the property value. Returns null if the property is undefined.
+        grunt.log.writeln('The meta.name property is: ' + grunt.config('meta.name'));
+        // Also logs the property value. Returns null if the property is undefined.
+        grunt.log.writeln('The meta.name property is: ' + grunt.config(['meta', 'name']));
     });
 
     [ // load plugins which provide necessary tasks.

@@ -202,7 +202,8 @@ module.exports = function (grunt) {
                 options: { import: false },
                 src: ['.tmp/styles/**/*.css']
             }
-        }
+        },
+        'git-describe': { me: {} }
     });
 
     // Alias Tasks
@@ -230,6 +231,7 @@ module.exports = function (grunt) {
         'csslint:strict',
         'test',
         'uglify:prod',
+        'save-version',
         'copy:release',
         'compress:release'
     ]);
@@ -246,6 +248,18 @@ module.exports = function (grunt) {
         // Also logs the property value. Returns null if the property is undefined.
         grunt.log.writeln('The meta.name property is: ' + grunt.config(['meta', 'name']));
     });
+    // Custom Tasks
+    grunt.registerTask('save-version', function () {
+        grunt.event.once('git-describe', function (rev) {
+            //grunt.log.writeln("Git Revision: " + rev);
+            grunt.file.write('.tmp/version.json', JSON.stringify({
+                version: grunt.config('pkg.version'),
+                revision: rev[3],
+                date: grunt.template.today()
+            }));
+        });
+        grunt.task.run('git-describe');
+    });
 
     [ // load plugins which provide necessary tasks.
         'grunt-contrib-concat',
@@ -260,6 +274,7 @@ module.exports = function (grunt) {
         'grunt-contrib-copy',
         'grunt-contrib-compress',
         'grunt-contrib-less',
-        'grunt-contrib-csslint'
+        'grunt-contrib-csslint',
+        'grunt-git-describe'
     ].forEach(grunt.loadNpmTasks);
 };

@@ -12,6 +12,15 @@ module.exports = function (grunt) {
             ext: '.css'
         }
     ];
+    var jsFiles = [
+        {
+            expand: true,
+            cwd: 'app/js/',
+            dest: '.tmp/js/',
+            src: '**/*.js',
+            ext: '.min.js'
+        }
+    ];
 
     // Project and task configuration.
     grunt.initConfig({
@@ -43,7 +52,8 @@ module.exports = function (grunt) {
             dist: {
                 src: '<%= concat.dist.dest %>',
                 dest: 'dist/<%= pkg.name %>.min.js'
-            }
+            },
+            prod: { files: jsFiles }
         },
         jshint: {
             options: {
@@ -219,7 +229,7 @@ module.exports = function (grunt) {
         'sass:prod',
         'csslint:strict',
         'test',
-        'clean',
+        'uglify:prod',
         'copy:release',
         'compress:release'
     ]);

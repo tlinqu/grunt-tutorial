@@ -147,6 +147,20 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        compress: {
+            release: {
+                options: {
+                    archive: 'webapp.tar.gz'
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'build',
+                        src: ['**/*']
+                    }
+                ]
+            }
         }
     });
 
@@ -185,7 +199,8 @@ module.exports = function (grunt) {
         'grunt-contrib-jasmine',
         'grunt-open',
         'grunt-contrib-clean',
-        'grunt-contrib-copy'
+        'grunt-contrib-copy',
+        'grunt-contrib-compress'
     ].forEach(grunt.loadNpmTasks);
 
     // Default task.

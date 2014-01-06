@@ -8,3 +8,5 @@ node_modules
 .tmp
 .grunt
 test/index.html
+build
+*.tar.gz
